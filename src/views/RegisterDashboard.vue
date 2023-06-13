@@ -13,6 +13,7 @@
             <v-card-text>
               <v-text-field
                 v-model="nama"
+                :rules="namaRules"
                 type="text"
                 label="Nama"
                 placeholder="Nama"
@@ -41,11 +42,12 @@
               />
               <v-switch label="Remember me" color="indigo"></v-switch>
             </v-card-text>
-            <v-card-actions class="justify-center">
+            <v-card-actions class="justify-center mb-2">
               <v-btn :loading="loading" type="submit" color="indigo">
                 <span class="white--text px-8">Register</span>
               </v-btn>
             </v-card-actions>
+            <router-link to="/login" class="my-4">Sudah punya akun? Login disini</router-link>
           </v-form>
         </v-card>
       </v-col>
@@ -66,6 +68,9 @@ export default {
     passwordShow:false,
     nama: '',
     email: '',
+    namaRules: [
+      v => !!v || 'nama is required',
+    ],
     emailRules: [
       v => !!v || 'E-mail is required',
       v => /.+@.+\..+/.test(v) || 'E-mail must be valid',

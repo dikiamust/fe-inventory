@@ -39,6 +39,7 @@
                 <span class="white--text px-8">Login</span>
               </v-btn>
             </v-card-actions>
+            <router-link to="/" class="my-4">Belum punya akun? Register disini</router-link>
           </v-form>
         </v-card>
       </v-col>
