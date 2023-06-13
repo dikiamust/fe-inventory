@@ -30,4 +30,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Notes
 
-Node installed must be less than 18 version
+The installed Node version must be less than 18.

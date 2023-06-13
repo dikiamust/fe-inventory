@@ -8,10 +8,17 @@
             <v-avatar size="100" color="indigo lighten-4">
               <img src="./../assets/vue.png" alt="logo">
             </v-avatar>
-            <p>Login to your account</p>
           </div>
           <v-form @submit.prevent="submitHandler" ref="form">
             <v-card-text>
+              <v-text-field
+                v-model="nama"
+                type="text"
+                label="Nama"
+                placeholder="Nama"
+                prepend-inner-icon="mdi-account"
+                required
+              />
               <v-text-field
                 v-model="email"
                 :rules="emailRules"
@@ -36,7 +43,7 @@
             </v-card-text>
             <v-card-actions class="justify-center">
               <v-btn :loading="loading" type="submit" color="indigo">
-                <span class="white--text px-8">Login</span>
+                <span class="white--text px-8">Register</span>
               </v-btn>
             </v-card-actions>
           </v-form>
@@ -44,7 +51,7 @@
       </v-col>
     </v-main>
     <v-snackbar top color="green" v-model="snackbar">
-      Login success
+      Regsiter success
     </v-snackbar>
   </div>
 </template>
@@ -57,6 +64,7 @@ export default {
     loading: false,
     snackbar:false,
     passwordShow:false,
+    nama: '',
     email: '',
     emailRules: [
       v => !!v || 'E-mail is required',
@@ -73,16 +81,17 @@ export default {
       this.loading = true
       if (this.$refs.form.validate()) {
          this.loading = false
-        const loginData = {
+        const registerData = {
+          nama: this.nama,
           email: this.email,
           password: this.password,
         };
 
-        axios.post('http://localhost:4000/auth/signin', loginData)
+        axios.post('http://localhost:4000/auth/signup', registerData)
           .then(response => {
             console.log(response.status)
-            if(response.status === 200){
-              this.$router.push('/frame');
+            if(response.status === 201){
+              this.$router.push('/login');
               this.snackbar = true;
               this.loading = false
             }
@@ -102,9 +111,6 @@ export default {
   }
   .welcome{
     margin-top: 120px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-  p, v-text-field{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 </style>
