@@ -2,27 +2,12 @@
     <v-navigation-drawer v-model="drawer" app color="indigo">
       <div class="text-center profile">
           <v-avatar class="mb-4" color="grey darken-1" size="64">
-              <v-img aspect-ratio="30" src="./../assets/iw-log.jpg"></v-img>
+              <v-img aspect-ratio="30" src="./../assets/vue.png"></v-img>
           </v-avatar>
       </div>
       <v-divider></v-divider>
 
       <v-list>
-        <!-- <v-list-item
-          v-for="[icon, text] in links"
-          :key="icon"
-          link
-          class="item-sidebar"
-        >
-          <v-list-item-icon>
-            <v-icon color="white">{{ icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title >{{ text }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list> -->
        <v-list-item link >
           <v-list-item-icon>
             <v-icon color="white">mdi-microsoft-windows</v-icon>
