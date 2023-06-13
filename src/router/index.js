@@ -21,29 +21,13 @@ const routes = [
     name: 'Tes',
     component: () => import('./../views/Tes')
   },
-  // {
-  //   path: '/home',
-  //   name: 'Home',
-  //   component: Home
-  // },
-  // {
-  //   path: '/:catchAll(.*)*',
-  //   name: "PageNotFound",
-  //   component: PageNotFound,
-  // },
   {
     path: '/frame',
     name: 'Frame',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Frame.vue'),
-    // children: [
-    //   {
-    //     path: '/tes',
-    //     component: () => import('../views/Tes.vue')
-    //   },
-    // ]
+    component: () => import('../views/Frame.vue'),
   }
 ]
 

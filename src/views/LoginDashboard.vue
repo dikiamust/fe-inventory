@@ -6,7 +6,7 @@
         <v-card class="pa-4">
           <div class="text-center">
             <v-avatar size="100" color="indigo lighten-4">
-              <img src="./../assets/iw-log.jpg" alt="logo">
+              <img src="./../assets/vue.png" alt="logo">
             </v-avatar>
             <p>Login to your account</p>
           </div>
@@ -50,10 +50,11 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'LoginDashboard',
   data: () => ({
-    loading:false,
+    loading: false,
     snackbar:false,
     passwordShow:false,
     email: '',
@@ -68,13 +69,27 @@ export default {
     ],
   }),
   methods:{
-    submitHandler(){
-      if (this.$refs.form.validate()){
-          this.loading = true
-        setTimeout(()=> {
-          this.loading = false
-          this.snackbar = true
-        },3000)
+    submitHandler() {
+      this.loading = true
+      if (this.$refs.form.validate()) {
+         this.loading = false
+        const loginData = {
+          email: this.email,
+          password: this.password,
+        };
+
+        axios.post('http://localhost:4000/auth/signin', loginData)
+          .then(response => {
+            console.log(response.status)
+            if(response.status === 200){
+              this.$router.push('/frame');
+              this.snackbar = true;
+              this.loading = false
+            }
+          })
+          .catch(error => {
+            console.error('error: ',error);
+          });
       }
     }
   }
@@ -86,7 +101,7 @@ export default {
     margin: 0 auto;
   }
   .welcome{
-    margin-top: 100px;
+    margin-top: 120px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   p, v-text-field{
