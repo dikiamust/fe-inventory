@@ -5,10 +5,10 @@
       <v-col cols="10" lg="4" class="mx-auto mt-3">
         <v-card class="pa-4">
           <div class="text-center">
-            <v-avatar size="100" color="indigo lighten-4">
+            <v-avatar size="100" color="indigo lighten-2" class="mb-6">
               <img src="./../assets/vue.png" alt="logo">
             </v-avatar>
-            <p>Login to your account</p>
+            <p>Silahkan login</p>
           </div>
           <v-form @submit.prevent="submitHandler" ref="form">
             <v-card-text>
@@ -34,7 +34,7 @@
               />
               <v-switch label="Remember me" color="indigo"></v-switch>
             </v-card-text>
-            <v-card-actions class="justify-center">
+            <v-card-actions class="justify-center mb-2">
               <v-btn :loading="loading" type="submit" color="indigo">
                 <span class="white--text px-8">Login</span>
               </v-btn>
